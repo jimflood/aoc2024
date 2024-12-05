@@ -28,3 +28,4 @@ day*.txt
 .DS_Store
 stack.yaml.lock
 aoc2024.cabal
+src/Day26.hs
