@@ -2,7 +2,8 @@ module Lib
     ( slurpLines,
       Coordinate,
       Grid,
-      parseGrid
+      parseGrid,
+      drawGrid
     ) where
 
 import qualified Data.Map as Map
@@ -19,8 +20,8 @@ type BoundedGrid = ((Int, Int), Grid)
 parseGrid :: [String] -> BoundedGrid
 parseGrid css = ((length (head css), length css) , Map.fromList [((x, y), c) | (y, cs) <- zip [0..] css, (x, c) <- zip [0..] cs])
 
-draw :: BoundedGrid -> String
-draw ((mx, my), m) = unlines [draw' y | y <- [0..my - 1]]
+drawGrid :: BoundedGrid -> String
+drawGrid ((mx, my), m) = unlines [draw' y | y <- [0..my - 1]]
     where
         draw' :: Int -> String
         draw' y = [m Map.! (x, y) | x <- [0..mx - 1]]
