@@ -40,9 +40,9 @@ compact2 x = compact2' x (reverse x)
                 move acc (a : bs)
                     | snd a == snd y = xs
                     | isJust (snd a) = move (a : acc) bs
-                    | isNothing (snd a) && fst a < fst y = move (a : acc) bs
-                    | isNothing (snd a) && fst a == fst y = (reverse acc) ++ [y] ++ (map edit bs)
-                    | isNothing (snd a) && fst a > fst y = (reverse acc) ++ [y, (fst a - fst y, Nothing)] ++ (map edit bs)
+                    | fst a < fst y = move (a : acc) bs
+                    | fst a == fst y = (reverse acc) ++ [y] ++ (map edit bs)
+                    | fst a > fst y = (reverse acc) ++ [y, (fst a - fst y, Nothing)] ++ (map edit bs)
                 move _ _ = error "cannot occur"
                 edit a
                     | a == y = (fst y, Nothing)
