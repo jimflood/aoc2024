@@ -24,6 +24,7 @@ dependencies:
 - split
 - regex-posix
 - containers
+- tuple-sop
 
 ghc-options:
 - -Wall
