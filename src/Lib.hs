@@ -3,7 +3,8 @@ module Lib
       Coordinate,
       Grid,
       parseGrid,
-      drawGrid
+      drawGrid,
+      chunk
     ) where
 
 import qualified Data.Map as Map
@@ -25,3 +26,11 @@ drawGrid ((mx, my), m) = unlines [draw' y | y <- [0..my - 1]]
     where
         draw' :: Int -> String
         draw' y = [m Map.! (x, y) | x <- [0..mx - 1]]
+
+chunk :: [String] -> [[String]]
+chunk = chunk' [[]]
+    where
+        chunk' (a : acc) (x : xs)
+            | x == "" = chunk' ([] : (a : acc)) xs
+            | otherwise = chunk' ((x : a) : acc) xs
+        chunk' acc [] = acc
