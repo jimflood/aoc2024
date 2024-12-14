@@ -76,8 +76,10 @@ pic a = pic' $ Set.map fst a
                     | Set.member (x - 3, y) rs = False
                     | Set.member (x - 2, y) rs = False
                     | Set.member (x - 1, y) rs = False
+                    -- @
                     | Set.member (x + 1, y) rs = False
                     | Set.member (x + 2, y) rs = False
+                    | Set.member (x + 3, y) rs = False
                     --
                     | Set.member (x - 3, y + 1) rs = False
                     | Set.member (x - 2, y + 1) rs = False
