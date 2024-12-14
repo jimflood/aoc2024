@@ -67,7 +67,7 @@ pic a = pic' $ Set.map fst a
         pic' rs = any tree (Set.toList rs)
             where
                 -- Look for this pattern at position @:
-                -- @..X...
+                -- ...@...
                 -- ..XXX..
                 -- .XXXXX.
                 -- XXXXXXX
