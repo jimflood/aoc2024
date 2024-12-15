@@ -1,10 +1,12 @@
 module Lib
     ( slurpLines,
       Coordinate,
+      BoundedGrid,
       Grid,
       parseGrid,
       drawGrid,
-      chunk
+      chunk,
+      opchunk -- order preserved
     ) where
 
 import qualified Data.Map as Map
@@ -34,3 +36,12 @@ chunk = chunk' [[]]
             | x == "" = chunk' ([] : (a : acc)) xs
             | otherwise = chunk' ((x : a) : acc) xs
         chunk' acc [] = acc
+
+opchunk :: [String] -> [[String]]
+opchunk = opchunk' [] []
+    where
+        opchunk' acc t (x : xs)
+            | x == "" = opchunk' (reverse t : acc) [] xs
+            | otherwise = opchunk' acc (x : t) xs
+        opchunk' acc t [] = reverse (reverse t : acc)
+        opchunk _ _ _ = error "bad input"
