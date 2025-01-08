@@ -25,6 +25,8 @@ dependencies:
 - regex-posix
 - containers
 - tuple-sop
+- bytestring
+- utf8-string
 
 ghc-options:
 - -Wall
